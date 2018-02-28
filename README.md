@@ -1,5 +1,6 @@
 # neto-swift-example
 an example Swift project for displaying Neto inventory data by scanning barcodes or manual input.
+Note: this app only supports iOS 11 and Swift 4.1.
 
 To use:
 1. Get an API Key. Check here for more info: https://developers.neto.com.au/documentation/engineers/api-documentation/getting-started/
