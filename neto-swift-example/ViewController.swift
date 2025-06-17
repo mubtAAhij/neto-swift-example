@@ -79,7 +79,7 @@ class ViewController: UIViewController {
         guard !alertShown else {
             return
         }
-        let alert = UIAlertController(title: "Welcome to SKU Manager",
+        let alert = UIAlertController(title: String(localized: "welcome_to_sku_manager", comment: "Title for the welcome alert"),
                                       message: "In the Camera view, tap to scan a barcode. Alternatively, manually enter the data in the Manual view.",
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: { _ in
