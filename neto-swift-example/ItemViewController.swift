@@ -54,7 +54,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                 bodyContent["Filter"] = filterContent
             }
         } else {
-            self.navigationItem.title = "No Data Inputted"
+            self.navigationItem.title = String(localized: "no_data_inputted", comment: "Navigation title shown when no data has been entered")
             return
         }
         let jsonData = try? JSONSerialization.data(withJSONObject: bodyContent)
@@ -97,7 +97,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                 } else {
                     DispatchQueue.main.async {
-                        self.navigationItem.title = "Item Not Found"
+                        self.navigationItem.title = String(localized: "item_not_found", comment: "Navigation title shown when an item could not be found")
                     }
                 }
             }
@@ -128,51 +128,51 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         if (self.itemData != nil) {
             if (indexPath.row == 0) {
                 // set the text from the data model
-                cell.textLabel?.text = "Model"
-                cell.detailTextLabel?.text = self.itemData["Model"] as? String
+                cell.textLabel?.text = String(localized: "model", comment: "Label for model information in details view")
+                cell.detailTextLabel?.text = self.itemData[String(localized: "model", comment: "Label for displaying the model information of an item")] as? String
             } else if (indexPath.row == 1) {
-                cell.textLabel?.text = "Subtitle"
-                cell.detailTextLabel?.text = self.itemData["Subtitle"] as? String
+                cell.textLabel?.text = String(localized: "subtitle", comment: "Label for subtitle field in item details table")
+                cell.detailTextLabel?.text = self.itemData[String(localized: "subtitle", comment: "Label for subtitle information row in item details table")] as? String
             } else if (indexPath.row == 2) {
-                cell.textLabel?.text = "SKU"
-                cell.detailTextLabel?.text = self.itemData["SKU"] as? String
+                cell.textLabel?.text = String(localized: "sku", comment: "Label for Stock Keeping Unit (SKU) in item details")
+                cell.detailTextLabel?.text = self.itemData[String(localized: "sku", comment: "Label for Stock Keeping Unit (SKU) in product details")] as? String
             } else if (indexPath.row == 3) {
-                cell.textLabel?.text = "Inventory ID"
+                cell.textLabel?.text = String(localized: "inventory_id", comment: "Label for the inventory ID field in item details")
                 cell.detailTextLabel?.text = self.itemData["ID"] as? String
             } else if (indexPath.row == 4) {
-                cell.textLabel?.text = "RRP"
-                cell.detailTextLabel?.text = self.itemData["RRP"] as? String
+                cell.textLabel?.text = String(localized: "rrp", comment: "Label for Recommended Retail Price in product details")
+                cell.detailTextLabel?.text = self.itemData[String(localized: "rrp", comment: "Label for Recommended Retail Price in product details")] as? String
             } else if (indexPath.row == 5) {
-                cell.textLabel?.text = "Price"
+                cell.textLabel?.text = String(localized: "price", comment: "Label for item's cost price field in product details")
                 cell.detailTextLabel?.text = self.itemData["CostPrice"] as? String
             } else if (indexPath.row == 6) {
-                cell.textLabel?.text = "Promotion Price"
+                cell.textLabel?.text = String(localized: "promotion_price", comment: "Label for the promotion price field in product details")
                 cell.detailTextLabel?.text = self.itemData["PromotionPrice"] as? String
             } else if (indexPath.row == 7) {
-                cell.textLabel?.text = "Committed Quantity"
+                cell.textLabel?.text = String(localized: "committed_quantity", comment: "Label for committed quantity field in item details")
                 cell.detailTextLabel?.text = self.itemData["CommittedQuantity"] as? String
             } else if (indexPath.row == 8) {
-                cell.textLabel?.text = "Available Sell Quantity"
+                cell.textLabel?.text = String(localized: "available_sell_quantity", comment: "Label for available sell quantity shown in inventory details")
                 cell.detailTextLabel?.text = self.itemData["AvailableSellQuantity"] as? String
             } else if (indexPath.row == 9) {
-                cell.textLabel?.text = "Is Active?"
+                cell.textLabel?.text = String(localized: "is_active", comment: "Label for showing whether an item is active or not in item details")
                 cell.detailTextLabel?.text = self.itemData["IsActive"] as? String
             } else if (indexPath.row == 10) {
-                cell.textLabel?.text = "Unit of Measure"
+                cell.textLabel?.text = String(localized: "unit_of_measure", comment: "Label for the unit of measure field in product details")
                 cell.detailTextLabel?.text = self.itemData["UnitOfMeasure"] as? String
             } else if (indexPath.row == 11) {
-                cell.textLabel?.text = "Product URL"
+                cell.textLabel?.text = String(localized: "product_url", comment: "Label for product URL field in product details")
                 cell.detailTextLabel?.text = self.itemData["ProductURL"] as? String
             } else if (indexPath.row > 11) {
                 if let wq = self.itemData["WarehouseQuantity"] as? [Any] {
                     if wq.count != 0 && indexPath.row - 12 < wq.count {
                         if let wqi = wq[indexPath.row - 12] as? [String: Any] {
-                            cell.textLabel?.text = String("Warehouse \(wqi["WarehouseID"]!) Quantity")
+                            cell.textLabel?.text = String(String(localized: "warehouse_id_quantity", comment: "Label showing warehouse ID and quantity information in a table view"))
                             cell.detailTextLabel?.text = wqi["Quantity"] as? String
                         }
                     }
                 } else if let wq = self.itemData["WarehouseQuantity"] as? [String: Any] {
-                    cell.textLabel?.text = String("Warehouse \(wq["WarehouseID"]!) Quantity")
+                    cell.textLabel?.text = String(String(localized: "warehouse_id_quantity", comment: "Label showing warehouse ID and quantity information in a table cell"))
                     cell.detailTextLabel?.text = wq["Quantity"] as? String
                 }
             }
