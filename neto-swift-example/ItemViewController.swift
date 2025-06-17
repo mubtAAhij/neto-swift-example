@@ -54,7 +54,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                 bodyContent["Filter"] = filterContent
             }
         } else {
-            self.navigationItem.title = "No Data Inputted"
+            self.navigationItem.title = String(localized: "no_data_inputted", comment: "Navigation bar title shown when no data has been entered")
             return
         }
         let jsonData = try? JSONSerialization.data(withJSONObject: bodyContent)
@@ -83,7 +83,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                         let url: URL? = URL(string: imageURL)
                         let data = try? Data(contentsOf: url!)
                         DispatchQueue.main.async {
-                            self.navigationItem.title = item0Data["Model"] as? String
+                            self.navigationItem.title = item0Data[String(localized: "model", comment: "Title for a view showing model information")] as? String
                             if (data != nil) {
                                 self.imageView.image = UIImage(data: data!)
                             }
@@ -97,7 +97,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                 } else {
                     DispatchQueue.main.async {
-                        self.navigationItem.title = "Item Not Found"
+                        self.navigationItem.title = String(localized: "item_not_found", comment: "Navigation title shown when an item cannot be found")
                     }
                 }
             }
@@ -128,51 +128,51 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         if (self.itemData != nil) {
             if (indexPath.row == 0) {
                 // set the text from the data model
-                cell.textLabel?.text = "Model"
-                cell.detailTextLabel?.text = self.itemData["Model"] as? String
+                cell.textLabel?.text = String(localized: "model", comment: "Label for the model field in item details")
+                cell.detailTextLabel?.text = self.itemData[String(localized: "model", comment: "Label for the model information field in device details view")] as? String
             } else if (indexPath.row == 1) {
-                cell.textLabel?.text = "Subtitle"
-                cell.detailTextLabel?.text = self.itemData["Subtitle"] as? String
+                cell.textLabel?.text = String(localized: "subtitle", comment: "Label for subtitle field in item details")
+                cell.detailTextLabel?.text = self.itemData[String(localized: "subtitle", comment: "Label for the subtitle field in item details")] as? String
             } else if (indexPath.row == 2) {
-                cell.textLabel?.text = "SKU"
-                cell.detailTextLabel?.text = self.itemData["SKU"] as? String
+                cell.textLabel?.text = String(localized: "sku", comment: "Label for Stock Keeping Unit (SKU) in product details")
+                cell.detailTextLabel?.text = self.itemData[String(localized: "sku", comment: "Label for Stock Keeping Unit field in product details")] as? String
             } else if (indexPath.row == 3) {
-                cell.textLabel?.text = "Inventory ID"
+                cell.textLabel?.text = String(localized: "inventory_id", comment: "Label for the inventory identification number of a product")
                 cell.detailTextLabel?.text = self.itemData["ID"] as? String
             } else if (indexPath.row == 4) {
-                cell.textLabel?.text = "RRP"
-                cell.detailTextLabel?.text = self.itemData["RRP"] as? String
+                cell.textLabel?.text = String(localized: "rrp", comment: "Label for Recommended Retail Price shown in item details")
+                cell.detailTextLabel?.text = self.itemData[String(localized: "rrp", comment: "Label for Recommended Retail Price in product details")] as? String
             } else if (indexPath.row == 5) {
-                cell.textLabel?.text = "Price"
+                cell.textLabel?.text = String(localized: "price", comment: "Label for the price column in product details table")
                 cell.detailTextLabel?.text = self.itemData["CostPrice"] as? String
             } else if (indexPath.row == 6) {
-                cell.textLabel?.text = "Promotion Price"
+                cell.textLabel?.text = String(localized: "promotion_price", comment: "Label for an item's promotional price in the product details table")
                 cell.detailTextLabel?.text = self.itemData["PromotionPrice"] as? String
             } else if (indexPath.row == 7) {
-                cell.textLabel?.text = "Committed Quantity"
+                cell.textLabel?.text = String(localized: "committed_quantity", comment: "Label for the committed quantity of an item in inventory")
                 cell.detailTextLabel?.text = self.itemData["CommittedQuantity"] as? String
             } else if (indexPath.row == 8) {
-                cell.textLabel?.text = "Available Sell Quantity"
+                cell.textLabel?.text = String(localized: "available_sell_quantity", comment: "Label for available quantity that can be sold, shown in item details")
                 cell.detailTextLabel?.text = self.itemData["AvailableSellQuantity"] as? String
             } else if (indexPath.row == 9) {
-                cell.textLabel?.text = "Is Active?"
+                cell.textLabel?.text = String(localized: "is_active", comment: "Label for whether an item is active or not in item details")
                 cell.detailTextLabel?.text = self.itemData["IsActive"] as? String
             } else if (indexPath.row == 10) {
-                cell.textLabel?.text = "Unit of Measure"
+                cell.textLabel?.text = String(localized: "unit_of_measure", comment: "Label for unit of measure field in product details")
                 cell.detailTextLabel?.text = self.itemData["UnitOfMeasure"] as? String
             } else if (indexPath.row == 11) {
-                cell.textLabel?.text = "Product URL"
+                cell.textLabel?.text = String(localized: "product_url", comment: "Label for the product URL field in product details")
                 cell.detailTextLabel?.text = self.itemData["ProductURL"] as? String
             } else if (indexPath.row > 11) {
                 if let wq = self.itemData["WarehouseQuantity"] as? [Any] {
                     if wq.count != 0 && indexPath.row - 12 < wq.count {
                         if let wqi = wq[indexPath.row - 12] as? [String: Any] {
-                            cell.textLabel?.text = String("Warehouse \(wqi["WarehouseID"]!) Quantity")
+                            cell.textLabel?.text = String(String(localized: "warehouse_id_quantity", comment: "Label showing warehouse ID and quantity information"))
                             cell.detailTextLabel?.text = wqi["Quantity"] as? String
                         }
                     }
                 } else if let wq = self.itemData["WarehouseQuantity"] as? [String: Any] {
-                    cell.textLabel?.text = String("Warehouse \(wq["WarehouseID"]!) Quantity")
+                    cell.textLabel?.text = String(String(localized: "warehouse_quantity", comment: "Label showing warehouse ID and quantity information in inventory details"))
                     cell.detailTextLabel?.text = wq["Quantity"] as? String
                 }
             }

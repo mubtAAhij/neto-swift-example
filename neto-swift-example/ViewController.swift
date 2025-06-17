@@ -79,10 +79,10 @@ class ViewController: UIViewController {
         guard !alertShown else {
             return
         }
-        let alert = UIAlertController(title: "Welcome to SKU Manager",
-                                      message: "In the Camera view, tap to scan a barcode. Alternatively, manually enter the data in the Manual view.",
+        let alert = UIAlertController(title: String(localized: "welcome_to_sku_manager", comment: "Title for welcome alert dialog in SKU Manager app"),
+                                      message: String(localized: "camera_view_scan_instructions", comment: "Instructions explaining how to scan barcodes or manually enter data in the app"),
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: String(localized: "got_it", comment: "Confirmation button text in the first-launch welcome alert"), style: .default, handler: { _ in
             UserDefaults.standard.set(true, forKey: "alertShown")
         }))
         DispatchQueue.main.async {
