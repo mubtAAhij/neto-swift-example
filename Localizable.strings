@@ -1,0 +1,11 @@
+// Localizable.strings
+"no_data_inputted" = "No Data Inputted";
+"item_not_found" = "Item Not Found";
+"inventory_id_label" = "Inventory ID";
+"promotion_price_label" = "Promotion Price";
+"committed_quantity_label" = "Committed Quantity";
+"available_sell_quantity_label" = "Available Sell Quantity";
+"is_active_label" = "Is Active?";
+"unit_of_measure_label" = "Unit of Measure";
+"product_url_label" = "Product URL";
+"warehouse_quantity_label" = "Warehouse %@ Quantity";
