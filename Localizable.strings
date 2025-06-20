@@ -1,0 +1,14 @@
+// Localizable.strings
+"no_data_inputted" = "No Data Inputted";
+"item_not_found" = "Item Not Found";
+"inventory_id" = "Inventory ID";
+"promotion_price" = "Promotion Price";
+"committed_quantity" = "Committed Quantity";
+"available_sell_quantity" = "Available Sell Quantity";
+"is_active" = "Is Active?";
+"unit_of_measure" = "Unit of Measure";
+"product_url" = "Product URL";
+"warehouse_quantity" = "Warehouse %@ Quantity";
+"welcome_title" = "Welcome to SKU Manager";
+"welcome_message" = "In the Camera view, tap to scan a barcode. Alternatively, manually enter the data in the Manual view.";
+"got_it" = "Got it!";
