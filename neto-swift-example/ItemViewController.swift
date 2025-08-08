@@ -143,7 +143,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.textLabel?.text = "RRP"
                 cell.detailTextLabel?.text = self.itemData["RRP"] as? String
             } else if (indexPath.row == 5) {
-                cell.textLabel?.text = "Price"
+                cell.textLabel?.text = String(localized: "price_label", comment: "Label for price field")
                 cell.detailTextLabel?.text = self.itemData["CostPrice"] as? String
             } else if (indexPath.row == 6) {
                 cell.textLabel?.text = String(localized: "promotion_price", comment: "Label for promotion price field")
