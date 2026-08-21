@@ -1,0 +1,66 @@
+{
+  "version": "1.0",
+  "sourceLanguage": "en",
+  "strings": {
+    "item.model": {
+      "comment": "Localized string",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Model"
+          }
+        }
+      }
+    },
+    "item.subtitle": {
+      "comment": "Localized string",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Subtitle"
+          }
+        }
+      }
+    },
+    "item.sku": {
+      "comment": "Localized string",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SKU"
+          }
+        }
+      }
+    },
+    "item.rrp": {
+      "comment": "Localized string",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "RRP"
+          }
+        }
+      }
+    },
+    "item.price": {
+      "comment": "Localized string",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Price"
+          }
+        }
+      }
+    }
+  }
+}
