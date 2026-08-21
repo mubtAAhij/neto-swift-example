@@ -3,7 +3,7 @@
   "sourceLanguage": "en",
   "strings": {
     "item.model": {
-      "comment": "Localized string",
+      "comment": "neto-swift-example/ItemViewController.swift",
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -11,11 +11,17 @@
             "state": "translated",
             "value": "Model"
           }
+        },
+        "es-419": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Modelo"
+          }
         }
       }
     },
     "item.subtitle": {
-      "comment": "Localized string",
+      "comment": "neto-swift-example/ItemViewController.swift",
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -23,14 +29,26 @@
             "state": "translated",
             "value": "Subtitle"
           }
+        },
+        "es-419": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Subtítulo"
+          }
         }
       }
     },
     "item.sku": {
-      "comment": "Localized string",
+      "comment": "neto-swift-example/ItemViewController.swift",
       "extractionState": "manual",
       "localizations": {
         "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SKU"
+          }
+        },
+        "es-419": {
           "stringUnit": {
             "state": "translated",
             "value": "SKU"
@@ -39,7 +57,7 @@
       }
     },
     "item.rrp": {
-      "comment": "Localized string",
+      "comment": "neto-swift-example/ItemViewController.swift",
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -47,17 +65,29 @@
             "state": "translated",
             "value": "RRP"
           }
+        },
+        "es-419": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PVP recomendado"
+          }
         }
       }
     },
     "item.price": {
-      "comment": "Localized string",
+      "comment": "neto-swift-example/ItemViewController.swift",
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Price"
+          }
+        },
+        "es-419": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Precio"
           }
         }
       }
