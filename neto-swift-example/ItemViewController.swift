@@ -38,17 +38,17 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                 ["ID", "ImageURL", "Model", "WarehouseQuantity", "RRP", "ProductURL", "UnitOfMeasure", "CommittedQuantity", "AvailableSellQuantity", "CostPrice", "IsActive", "PromotionPrice", "Subtitle"]
             ]
         ]
-        if (self.sku != nil && self.sku.count > 0) {
+        if self.sku != nil && self.sku.count > 0 {
             if var filterContent = bodyContent["Filter"] as? [String: Any] {
                 filterContent["SKU"] = self.sku
                 bodyContent["Filter"] = filterContent
             }
-        } else if (self.productName != nil && self.productName.count > 0) {
+        } else if self.productName != nil && self.productName.count > 0 {
             if var filterContent = bodyContent["Filter"] as? [String: Any] {
                 filterContent["Name"] = self.productName
                 bodyContent["Filter"] = filterContent
             }
-        } else if (self.model != nil && self.model.count > 0) {
+        } else if self.model != nil && self.model.count > 0 {
             if var filterContent = bodyContent["Filter"] as? [String: Any] {
                 filterContent["Model"] = self.model
                 bodyContent["Filter"] = filterContent
@@ -76,7 +76,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
             let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
             if let responseJSON = responseJSON as? [String: Any] {
                 guard let itemData = responseJSON["Item"] as? [Any] else { return }
-                if (itemData.count > 0) {
+                if itemData.count > 0 {
                     guard let item0Data = itemData[0] as? [String: Any] else { return }
                     self.itemData = item0Data
                     if let imageURL = item0Data["ImageURL"] as? String {
@@ -84,7 +84,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                         let data = try? Data(contentsOf: url!)
                         DispatchQueue.main.async {
                             self.navigationItem.title = item0Data["Model"] as? String
-                            if (data != nil) {
+                            if data != nil {
                                 self.imageView.image = UIImage(data: data!)
                             }
                             self.tableView.reloadData()
@@ -106,12 +106,12 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (self.itemData != nil) {
+        if self.itemData != nil {
             if let wq = self.itemData["WarehouseQuantity"] as? [Any] {
-                //If there are multiple warehouses, we need to add them into the original data count and subtract an additional one for the 1 (WarehouseQuantity) we never used
+                // If there are multiple warehouses, we need to add them into the original data count and subtract an additional one for the 1 (WarehouseQuantity) we never used
                 return self.itemData.count + wq.count - 2
             } else {
-                //We have to subtract one for the ImageURL not displayed in table
+                // We have to subtract one for the ImageURL not displayed in table
                 return self.itemData.count - 1
             }
         } else {
@@ -123,47 +123,47 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // create a new cell if needed or reuse an old one
-        let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell!
+        let cell: UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell!
         
-        if (self.itemData != nil) {
-            if (indexPath.row == 0) {
+        if self.itemData != nil {
+            if indexPath.row == 0 {
                 // set the text from the data model
-                cell.textLabel?.text = "Model"
+                cell.textLabel?.text = String(localized: "item.model", defaultValue: "Model", comment: "Label for item model field")
                 cell.detailTextLabel?.text = self.itemData["Model"] as? String
-            } else if (indexPath.row == 1) {
-                cell.textLabel?.text = "Subtitle"
+            } else if indexPath.row == 1 {
+                cell.textLabel?.text = String(localized: "item.subtitle", defaultValue: "Subtitle", comment: "Label for item subtitle field")
                 cell.detailTextLabel?.text = self.itemData["Subtitle"] as? String
-            } else if (indexPath.row == 2) {
-                cell.textLabel?.text = "SKU"
+            } else if indexPath.row == 2 {
+                cell.textLabel?.text = String(localized: "item.sku", defaultValue: "SKU", comment: "Label for item SKU field")
                 cell.detailTextLabel?.text = self.itemData["SKU"] as? String
-            } else if (indexPath.row == 3) {
+            } else if indexPath.row == 3 {
                 cell.textLabel?.text = String(localized: "inventory_id", comment: "Label for inventory ID field")
                 cell.detailTextLabel?.text = self.itemData["ID"] as? String
-            } else if (indexPath.row == 4) {
-                cell.textLabel?.text = "RRP"
+            } else if indexPath.row == 4 {
+                cell.textLabel?.text = String(localized: "item.rrp", defaultValue: "RRP", comment: "Label for recommended retail price field")
                 cell.detailTextLabel?.text = self.itemData["RRP"] as? String
-            } else if (indexPath.row == 5) {
-                cell.textLabel?.text = "Price"
+            } else if indexPath.row == 5 {
+                cell.textLabel?.text = String(localized: "item.price", defaultValue: "Price", comment: "Label for item price field")
                 cell.detailTextLabel?.text = self.itemData["CostPrice"] as? String
-            } else if (indexPath.row == 6) {
+            } else if indexPath.row == 6 {
                 cell.textLabel?.text = String(localized: "promotion_price", comment: "Label for promotion price field")
                 cell.detailTextLabel?.text = self.itemData["PromotionPrice"] as? String
-            } else if (indexPath.row == 7) {
+            } else if indexPath.row == 7 {
                 cell.textLabel?.text = String(localized: "committed_quantity", comment: "Label for committed quantity field")
                 cell.detailTextLabel?.text = self.itemData["CommittedQuantity"] as? String
-            } else if (indexPath.row == 8) {
+            } else if indexPath.row == 8 {
                 cell.textLabel?.text = String(localized: "available_sell_quantity", comment: "Label for available sell quantity field")
                 cell.detailTextLabel?.text = self.itemData["AvailableSellQuantity"] as? String
-            } else if (indexPath.row == 9) {
+            } else if indexPath.row == 9 {
                 cell.textLabel?.text = String(localized: "is_active", comment: "Label for active status field")
                 cell.detailTextLabel?.text = self.itemData["IsActive"] as? String
-            } else if (indexPath.row == 10) {
+            } else if indexPath.row == 10 {
                 cell.textLabel?.text = String(localized: "unit_of_measure", comment: "Label for unit of measure field")
                 cell.detailTextLabel?.text = self.itemData["UnitOfMeasure"] as? String
-            } else if (indexPath.row == 11) {
+            } else if indexPath.row == 11 {
                 cell.textLabel?.text = String(localized: "product_url", comment: "Label for product URL field")
                 cell.detailTextLabel?.text = self.itemData["ProductURL"] as? String
-            } else if (indexPath.row > 11) {
+            } else if indexPath.row > 11 {
                 if let wq = self.itemData["WarehouseQuantity"] as? [Any] {
                     if wq.count != 0 && indexPath.row - 12 < wq.count {
                         if let wqi = wq[indexPath.row - 12] as? [String: Any] {
@@ -191,7 +191,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.cellForRow(at: indexPath)
         if indexPath.row == 11 && cell?.detailTextLabel?.text != "" {
             let urlAsString = cell?.detailTextLabel?.text
-            let url = URL(string : urlAsString!)
+            let url = URL(string: urlAsString!)
             UIApplication.shared.open(url!, options: [:]) { (success) in return }
         }
     }
